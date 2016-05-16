@@ -11,6 +11,7 @@ NODE *head = NULL;
 NODE *tail = NULL;
 
 void Insert_Node(int data); 
+int Length(NODE *temp);
 void Print_List(void);
 
 int main(){
@@ -45,16 +46,28 @@ void Insert_Node(int data)
 	}	
 }
 
+int Length(NODE *temp)
+{
+	int count = 0;
+	while(temp != NULL){
+		count++;
+		temp = temp -> next;
+	}
+	return count;
+}
+
 void Print_List(void)
 {
 	printf("Show LinkList Content....\n");
 	
 	NODE *temp = head;
-
+	
 	while(temp != NULL){
 		printf("%d -->  ", temp->data);
 		temp = temp->next;
 	}
 	printf("NULL \n");
+
+	printf("Show LinkList Length = %d\n", Length(head));
 
 }
