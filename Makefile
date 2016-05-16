@@ -1,6 +1,6 @@
 LIBS = -lm
-OBJS = linklist.o
+OBJS = single_linklist.o
 main: $(OBJS)
-	gcc -o linklist $(OBJS) $(LIBS)
+	gcc -o single_linklist $(OBJS) $(LIBS)
 clean: 
-	rm -f linklist $(OBJS)
+	rm -f single_linklist $(OBJS)
