@@ -10,7 +10,8 @@ typedef struct node{
 NODE *head = NULL;
 NODE *tail = NULL;
 
-void Insert_Node(int data); 
+void Insert_Node(int data);
+int Delete_Node(int data); 
 int Length(NODE *temp);
 void Print_List(void);
 
@@ -22,7 +23,13 @@ int main(){
 	Insert_Node(10);
 	Insert_Node(20);
 	Insert_Node(26);
+
 	Print_List();	
+	
+	Delete_Node(20);
+
+	Print_List();
+	
 	return 0; 
 
 }
@@ -46,6 +53,26 @@ void Insert_Node(int data)
 		tail = new_Node;
 
 	}	
+}
+
+int Delete_Node(int data)
+{
+	NODE *temp, *temp1;
+	temp = head;
+	while(temp != NULL){
+		if(temp -> next -> data == data){
+			temp1 = temp -> next;
+			temp -> next = temp -> next -> next;
+			printf("Delete data success = %d\n", temp->data);
+			
+			free(temp1);
+
+			return 1;
+		}
+		temp = temp->next;
+	}	
+	printf("Delete data fail\n");
+	return -1;
 }
 
 int Length(NODE *temp)
@@ -73,3 +100,5 @@ void Print_List(void)
 	printf("Show LinkList Length = %d\n", Length(head));
 
 }
+
+

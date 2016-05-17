@@ -10,7 +10,7 @@ typedef struct node{
 NODE *head = NULL;
 NODE *tail = NULL;
 
-void Insert_Node(int data); 
+void Insert_Node(int data);
 int Length(NODE *temp);
 void Print_List(void);
 
@@ -22,7 +22,10 @@ int main(){
 	Insert_Node(10);
 	Insert_Node(20);
 	Insert_Node(26);
+
 	Print_List();	
+	
+
 	return 0; 
 
 }
