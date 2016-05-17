@@ -63,7 +63,7 @@ int Delete_Node(int data)
 		if(temp -> next -> data == data){
 			temp1 = temp -> next;
 			temp -> next = temp -> next -> next;
-			printf("Delete data success = %d\n", temp->data);
+			printf("Delete data success = %d\n", data);
 			
 			free(temp1);
 
