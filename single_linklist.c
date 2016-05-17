@@ -11,6 +11,8 @@ NODE *head = NULL;
 NODE *tail = NULL;
 
 void Insert_Node(int data);
+int Insert_First_Node(int data);
+int Insert_Mid_Node(int data); 
 int Delete_Node(int data); 
 int Length(NODE *temp);
 void Print_List(void);
@@ -23,13 +25,21 @@ int main(){
 	Insert_Node(10);
 	Insert_Node(20);
 	Insert_Node(26);
-
+	
 	Print_List();	
 	
 	Delete_Node(20);
 
 	Print_List();
+
+	Insert_First_Node(100);
+
+	Print_List();
 	
+	Insert_Mid_Node(70);
+	
+	Print_List();
+
 	return 0; 
 
 }
@@ -40,7 +50,8 @@ void Insert_Node(int data)
 	
 	if (new_Node == NULL)//can't allocate memory
 		printf("memory is not enough");	
-	
+			
+
 	new_Node -> data = data;
 	new_Node -> next = NULL; 
 
@@ -53,6 +64,40 @@ void Insert_Node(int data)
 		tail = new_Node;
 
 	}	
+}
+
+int Insert_First_Node(int data)
+{
+	NODE *new_node = (NODE *)malloc(sizeof(NODE));
+	if (new_node == NULL){
+		printf("memory is not enough");
+		return -1;
+	}	
+	new_node -> data = data;
+	new_node -> next = head;
+	head = new_node;
+	return 1;
+}
+
+int Insert_Mid_Node(int data)// insert to 100 -> 50 -> 70 -> 10  .. 
+{
+	NODE *temp;
+	NODE *new_node = (NODE *)malloc(sizeof(NODE));
+	if (new_node == NULL){
+		printf("memory is not enough");
+		return -1;
+	}
+	temp = head;
+	while(temp !=NULL){
+		if (temp -> next -> data == 10 ){			
+			new_node -> data = data;
+			new_node -> next = temp -> next;
+			temp -> next  = new_node;
+			return 1;		
+		}
+		temp = temp -> next;
+	}
+	return 1;
 }
 
 int Delete_Node(int data)
