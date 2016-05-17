@@ -35,7 +35,7 @@ void Insert_Node(int data)
 		printf("memory is not enough");	
 	
 	new_Node -> data = data;
-	new_Node -> next = NULL; 
+	new_Node -> next = head;//next will link to head for circular linklist
 
 	if (head == NULL){//The linklist don't have any value if head is null
 		head = new_Node;
@@ -54,6 +54,8 @@ int Length(NODE *temp)
 	while(temp != NULL){
 		count++;
 		temp = temp -> next;
+		if(temp == head)
+			break;
 	}
 	return count;
 }
@@ -67,8 +69,12 @@ void Print_List(void)
 	while(temp != NULL){
 		printf("%d -->  ", temp->data);
 		temp = temp->next;
+		if(temp == head){
+			printf("%d --> ",temp->data);
+			break;
+		}
 	}
-	printf("NULL \n");
+	printf(".........\n");
 
 	printf("Show LinkList Length = %d\n", Length(head));
 
